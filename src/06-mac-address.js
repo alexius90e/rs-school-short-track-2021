@@ -13,12 +13,14 @@
  *
  */
 function isMAC48Address(n) {
-  n.slice('-').forEach((element) => {
-    if (element.match(/[A-F, 0-9]/gi)) {
-      return false;
+  const arr = n.split('-');
+  let isMac = true;
+  arr.forEach((element) => {
+    if ((element.match(/[A-F, 0-9]/gi).join('') !== element) !== false) {
+      isMac = false;
     }
-    return true;
   });
+  return isMac;
 }
 
 module.exports = isMAC48Address;
